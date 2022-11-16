@@ -8,6 +8,7 @@ import { TodoItemComponent } from './CustomComponent/todo-item/todo-item.compone
 import { AddTodoItemComponent } from './CustomComponent/add-todo-item/add-todo-item.component';
 import { ToastComponent } from './CustomComponent/toast/toast.component';
 import { FormFieldVlidationComponent } from './CustomComponent/form-field-vlidation/form-field-vlidation.component';
+import { AboutComponent } from './CustomComponent/about/about.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormFieldVlidationComponent } from './CustomComponent/form-field-vlidat
     TodoItemComponent,
     AddTodoItemComponent,
     ToastComponent,
-    FormFieldVlidationComponent
+    FormFieldVlidationComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
