@@ -1,0 +1,82 @@
+<div>
+    <form [formGroup]="addTodoFrom" (ngSubmit)="onSubmitAddTodo()">
+        <!-- <div class="mb-3" [ngClass]="displayFieldCss('todo_title')"> -->
+        <div class="mb-3">
+            <label for="title" class="form-label control-label required">Todo Title</label>
+            <input [ngClass]="(addTodoFrom.get('todo_title').invalid && addTodoFrom.get('todo_title').touched) ? 'is-invalid' : ''" type="text" [(ngModel)]="todo_title" name="todo_title" formControlName="todo_title" class="form-control" id="title" placeholder="todo title"
+            >
+            <!--//this is template driven form  we need to add these attributes for validation in html element
+                required minlength="4" maxLength="10" appForbiddenName="todo|Todo|TODO" -->
+            <div *ngIf="addTodoFrom.controls['todo_title'].invalid && formSubmitAttempt" class="alert alert-danger">
+                <div *ngIf="addTodoFrom.controls['todo_title'].errors['required']">
+                    Todo title is required.
+                </div>
+                <div *ngIf="addTodoFrom.controls['todo_title'].errors['minlength'] || addTodoFrom.controls['todo_title'].errors['maxlength']">
+                    Todo title must be greater than 4 & less than 10 char.
+                </div>
+                <div *ngIf="addTodoFrom.controls['todo_title'].errors['forbiddenName']">
+                    Todo title should not todo only.
+                </div>
+            </div> 
+            <!-- <app-form-field-vlidation 
+                [displayError]="formSubmitAttempt ? isFieldValid('todo_title') : false " 
+                errorMsg="Todo title is required  with length between 4 to 10 char">
+            </app-form-field-vlidation> -->
+        </div>
+        <!-- <div class="mb-3" [ngClass]="displayFieldCss('todo_desc')"> -->
+        <div class="mb-3" >
+            <label for="description" class="form-label control-label required">Todo Description</label>
+            <textarea [ngClass]="(addTodoFrom.get('todo_desc').invalid && addTodoFrom.get('todo_title').touched) ? 'is-invalid' : ''" class="form-control" [(ngModel)]="todo_desc" formControlName="todo_desc" name="todo_desc" id="description" rows="3"
+            ></textarea>
+            <!--  required minlength="8" maxLength="50" -->
+            <div *ngIf="addTodoFrom.controls['todo_desc'].invalid && formSubmitAttempt" class="alert alert-danger">
+                <div *ngIf="addTodoFrom.controls['todo_desc'].errors['required']">
+                    Todo description is required.
+                </div>
+                <div *ngIf="addTodoFrom.controls['todo_desc'].errors['minlength'] || addTodoFrom.controls['todo_desc'].errors['maxlength']">
+                    Todo description must be greater than 8 & less than 50 char.
+                </div>
+            </div> 
+            <!-- <app-form-field-vlidation 
+                [displayError]="formSubmitAttempt ? isFieldValid('todo_desc'): false" 
+                errorMsg="Todo description is required with length between 8 to 50 char">
+            </app-form-field-vlidation> -->
+        </div>
+        <!-- <div class="mb-3" [ngClass]="displayFieldCss('todo_create')"> -->
+        <div class="mb-3">
+            <label for="created_date" class="form-label control-label required">Todo Created Date</label>
+            <input [ngClass]="(addTodoFrom.get('todo_create').invalid && addTodoFrom.get('todo_title').touched) ? 'is-invalid' : ''" type='text' class="form-control" [(ngModel)]="todo_create" formControlName="todo_create" name="todo_create" id='created_date' placeholder="Created Date"
+            />
+            <!--required  addTodoFrom.controls['todo_create'].touched-->
+            <div *ngIf="addTodoFrom.controls['todo_create'].invalid && formSubmitAttempt" class="alert alert-danger">
+                <div *ngIf="addTodoFrom.controls['todo_create'].errors['required']">
+                    Todo creation date is required.
+                </div>
+            </div>
+            <!-- <app-form-field-vlidation 
+                [displayError]="formSubmitAttempt ? isFieldValid('todo_create'): false" 
+                errorMsg="Todo creation date is required">
+            </app-form-field-vlidation> -->
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" [(ngModel)]="todo_complete" formControlName="todo_complete" name="todo_complete" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                completed
+            </label>
+            <!-- <div *ngIf="addTodoFrom.controls['todo_complete'].invalid && addTodoFrom.controls['todo_complete'].touched" class="alert alert-danger">
+                <div *ngIf="addTodoFrom.controls['todo_complete'].errors['required']">
+                    Todo creation date is required.
+                </div>
+            </div> -->
+        </div>
+        <div class="md-3">
+            <!-- [disabled]="!addTodoFrom.valid"-->
+            <button type="submit" class="btn btn-sm btn-success">Add Todo Item</button>
+            <button type="button" class="btn btn-sm btn-info" (click)="reset()">Reset</button>
+        </div>
+        <div>
+            <p>Form value: {{ addTodoFrom.value | json }}</p>
+            <p>Form status: {{ addTodoFrom.status | json }}</p>
+        </div>
+    </form>
+</div>
