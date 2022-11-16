@@ -1,8 +1,8 @@
 
 <div class="my-3">
-    <h4 [ngClass]="{'strike':todo.completed}">{{todo.sno+". "+todo.title}}</h4>
+    <h4 [ngClass]="{'strike':todo.completed}"> {{todo.sno+". "+todo.title}}</h4>
     <p>{{todo.desc}}</p>
-    <div [style.stylePropertyName]="todo.title">
+    <div [ngClass]="{'strike':todo.completed}" [style.stylePropertyName]="todo.title">
         <p [attr.data-date]="todo.createdAt" [class.className]="todo.title">
             <span>{{todo.createdAt}}</span>
         </p>
