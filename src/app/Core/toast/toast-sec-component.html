@@ -1,0 +1,13 @@
+<!--We canged the toastTrigger and class-->
+<div [@toastTrigger]="(toastService.showsToast$ | async) ? 'open' : 'close'" [class]="toastService.toastState$ | async">
+    <div style="max-width: 160px;">
+        <!--We access the toastMessage$ observable in the service-->
+        {{ toastService.toastMessage$ | async }}
+    </div>
+
+    <a class="close-btn" (click)="dismiss()">
+        <small>
+            Dismiss
+        </small>
+    </a>
+</div>

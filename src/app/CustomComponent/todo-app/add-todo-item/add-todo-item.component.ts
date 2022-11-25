@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
-import TodoData from '../todos/sampleTodoData';
-import { Todo } from '../../Todo';
+import TodoData from '../sampleTodoData';
+import { Todo } from '../Todo';
 //import validator and FormBuilder
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { FormFieldVlidationComponent } from '../form-field-vlidation/form-field-vlidation.component';
+import { FormFieldVlidationComponent } from '../../form-field-vlidation/form-field-vlidation.component';
 
 @Component({
   selector: 'app-add-todo-item',
@@ -26,7 +26,6 @@ export class AddTodoItemComponent implements OnInit{
 	todo_active:boolean;
 	
 	constructor(private fb: FormBuilder ) {
-		console.log('AddTodoItemComponent constructor called');
 		this.formBuilder = fb;
 	}
 
@@ -49,12 +48,10 @@ export class AddTodoItemComponent implements OnInit{
 	}
 
 	// isFieldValid(field: string) {
-	// 	console.log(`validation checking - ${field}, ${this.addTodoFrom.get(field).valid}`);
 	// 	return (!this.addTodoFrom.get(field).valid && this.formSubmitAttempt);
 	// }
 
 	// displayFieldCss(field: string) {
-	// 	console.log(`displayFieldCss checking - ${field}`);
 	// 	return {
 	// 	  'has-error': this.isFieldValid(field),
 	// 	  'has-feedback': this.isFieldValid(field)
@@ -63,9 +60,7 @@ export class AddTodoItemComponent implements OnInit{
 
 	onSubmitAddTodo(): any {
 		this.formSubmitAttempt = true;
-		console.log('this.addTodoFrom.valid', this.addTodoFrom.valid);
 		if (this.addTodoFrom.valid) {
-			console.log('Form provided to submit!');
 			const addToDoData = {
 				sno:JSON.parse(localStorage.getItem('todos')).length+1,
 				title:this.todo_title,
@@ -75,7 +70,6 @@ export class AddTodoItemComponent implements OnInit{
 				updatedAt:this.todo_create,
 				active:this.todo_active
 			}
-			console.log('collected data from todo add form - ',addToDoData);
 			this.addTodo.emit(addToDoData);
 		}else{
 			//this.formValidChild.displayError = true; 
@@ -95,8 +89,7 @@ export class AddTodoItemComponent implements OnInit{
 	
 	validateAllFormFields(formGroup: FormGroup) { 
 		Object.keys(formGroup.controls).forEach(field => { 
-			const control = formGroup.get(field);
-			console.log('validateAllFormFields control - ',control, control instanceof FormControl);            
+			const control = formGroup.get(field);            
 			if (control instanceof FormControl) { 
 				control.markAsTouched({ onlySelf: true });
 			} else if (control instanceof FormGroup) {

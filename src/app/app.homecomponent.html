@@ -1,7 +1,7 @@
 <div>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" routerLink="">Todo List </a>
+            <a class="navbar-brand" routerLink="">Angular Demo App </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -9,20 +9,83 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"  routerLink="/">Home</a>
+                    <li *ngIf="isUserLogin">
+                        <ul id="authrouteId" class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item" (click)="activateClass('homeroute')">
+                                <a class="nav-link active_new" aria-current="page" id="home" routerLink="/home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="activateClass('about')" id="about"
+                                    routerLink="/about">About</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="todo" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Todo App
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" (click)="activateClass('add-todo')" id="add-todo"
+                                            aria-current="page" routerLink="/todo/add-todo">Add Todo</a></li>
+                                    <li><a class="dropdown-item" (click)="activateClass('todo-list')" id="todo-list"
+                                            aria-current="page" routerLink="/todo/todo-list">Todo List</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item"  href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="datatables" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Datatables
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" (click)="activateClass('pagination')" id="pagination"
+                                            aria-current="page" [routerLink]="['/datatables/pagination']">Pagination</a></li>
+                                    <li><a class="dropdown-item" (click)="activateClass('scrollloading')" id="scrollloading"
+                                            aria-current="page" [routerLink]="['/datatables/scrollloading']">Scroll Loading</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="logoutUser()" id="logout" routerLink="/">Logout</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link"  routerLink="/about">about</a>
+                    <li *ngIf="!isUserLogin">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="activateClass('login')" id="login"
+                                    routerLink="/login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="activateClass('registration')" id="registration"
+                                    routerLink="/registration">Register</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
+                <!-- <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                </form> -->
             </div>
         </div>
     </nav>
-    <router-outlet></router-outlet>
     <!-- <app-todos></app-todos> -->
+    <app-toast></app-toast>
+    <router-outlet></router-outlet>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#homeroute').addClass('active_new');
+    });
+    $(".nav-item a .nav-link").click(function () {
+        console.log('nav clicked ...');
+        $('.nav-item a .nav-link').removeClass('active_new');
+        $(this).toggleClass("active_new");
+    });
+</script>

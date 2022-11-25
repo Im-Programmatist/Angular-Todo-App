@@ -1,0 +1,56 @@
+<div class="my-3" *ngIf="todo">
+    <div class="card" style="width: 40rem;margin-top: 1rem;">
+        <div class="card-body">
+            <h4 class="card-title" [ngClass]="{'strike':todo.completed}">{{todo.sno+". "+todo.title}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted" [ngClass]="{'strike':todo.completed}">
+                <p [attr.data-date]="todo.createdAt" [class.className]="todo.title">
+                    <span>{{todo.createdAt}}</span>
+                </p>
+            </h6>
+            <p class="card-text">{{todo.desc}}</p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" [attr.data-my-attr]="todo.completed" [value]="todo.completed"
+                    id="flexCheckDefault" [checked]="todo.completed" (click)="changeTodoStatus(todo.completed, todo)" />
+                <label class="form-check-label" for="flexCheckDefault">
+                    <i>{{ todo.completed ? "Mark as incomplete" : "Mark as complete"}}</i>
+                </label>
+            </div>
+            <button type="button" class="btn btn-sm btn-danger" (click)="OnClick(todo)">Delete</button>
+            <!-- <a href="#" class="card-link">Another link</a> -->
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- <app-toast></app-toast> -->
+    <div class="jumbotron jumbotron-fluid" *ngIf="!todo && todosObj">
+        <div class="container">
+            <h1 class="display-4">No Todo Added Yet</h1>
+            <p class="lead">Please add new todo in list and be organized person!</p>
+        </div>
+    </div>
+    <div class="container-fluid" *ngIf="!todo && todosObj">
+        <div *ngFor="let todoitem of todosObj">
+            <div class="card" style="width: 40rem;margin-top: 1rem;">
+                <div class="card-body">
+                    <h4 class="card-title" [ngClass]="{'strike':todoitem.completed}">{{todoitem.sno+". "+todoitem.title}}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted" [ngClass]="{'strike':todoitem.completed}">
+                        <p [attr.data-date]="todoitem.createdAt" [class.className]="todoitem.title">
+                            <span>{{todoitem.createdAt}}</span>
+                        </p>
+                    </h6>
+                    <p class="card-text">{{todoitem.desc}}</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [attr.data-my-attr]="todoitem.completed" [value]="todoitem.completed"
+                            id="flexCheckDefault" [checked]="todoitem.completed" (click)="changeTodoStatus(todoitem.completed, todoitem)" />
+                        <label class="form-check-label" for="flexCheckDefault">
+                            <i>{{ todoitem.completed ? "Mark as incomplete" : "Mark as complete"}}</i>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-danger" (click)="OnClick(todoitem)">Delete</button>
+                    <!-- <a href="#" class="card-link">Another link</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

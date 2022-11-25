@@ -12,10 +12,10 @@ export class FormFieldVlidationComponent implements OnInit{
 	@Input() errorMsgType: string;
 
 	constructor(){
-		console.log('FOrm Validtion Constructor called');
+		
 	}
 
 	ngOnInit():void {
-		console.log('FOrm Validtion ngOnInit called');
+	
 	}
 } 
