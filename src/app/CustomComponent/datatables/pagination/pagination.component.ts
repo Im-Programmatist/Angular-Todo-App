@@ -38,7 +38,7 @@ export class PaginationComponent implements AfterViewInit, OnInit, OnDestroy{
 			result => {
 				this.page_length = result.total;
 				this.pageSizeOptions=[ result.total/2, result.total/4, result.total/5, result.total/10 ];
-				this.dataSource = new MatTableDataSource<PeriodicElement>(result.products);
+				this.dataSource = new MatTableDataSource<any>(result.products);
 				this.toastService.showToast( TOAST_STATE.success, 'Data fetched successfully!');
 			},
 			error => {

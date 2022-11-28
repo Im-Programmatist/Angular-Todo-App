@@ -9,6 +9,7 @@
                     <input matInput placeholder="Username" 
                     [(ngModel)]="username" name="username" formControlName="username" required>
                     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>kminchelle</mat-hint>
                     <div *ngIf="loginForm.controls['username'].invalid && formSubmitAttempt" class="alert alert-danger">
                         <div *ngIf="loginForm.controls['username'].errors['required']">
                             Username is required.
@@ -18,6 +19,7 @@
                 <mat-form-field class="example-full-width">
                     <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" formControlName="password" required>
                     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>0lelplR</mat-hint>
                     <div *ngIf="loginForm.controls['password'].invalid && formSubmitAttempt" class="alert alert-danger">
                         <div *ngIf="loginForm.controls['password'].errors['required']">
                             Password is required.

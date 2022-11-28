@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
 		//this.isUserLogin = this.auth.getAuthStatus();   
 		console.log('location ', this._loc.path());  
 		this.activateClass('home');
+		this.router.navigate(['home']);
     }
 	activateClass(routeId): void {
 		setTimeout(()=>{
