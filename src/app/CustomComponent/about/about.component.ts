@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
 
+	constructor() { }
+	testEvent(event):void {
+		console.log(event.target.value);
+		console.log( (event.target as HTMLInputElement).value);		
+	}
 }

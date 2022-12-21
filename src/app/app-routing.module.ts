@@ -23,6 +23,11 @@ const routes: Routes = [
 		canActivate: [AuthGuard],
 		loadChildren: () => import('./CustomComponent/datatables/datatable.module').then(mod=>mod.DatatableModule)
 	},
+	{
+		path:'rxjs-angular',
+		canActivate: [AuthGuard],
+		loadChildren: () => import('./CustomComponent/rxjs-angular/rxjs-angular.module').then(mod=>mod.RxjsAngularModuleModule)
+	},
 ];
 
 @NgModule({

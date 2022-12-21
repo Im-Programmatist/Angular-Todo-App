@@ -50,6 +50,18 @@
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="rxjsangular" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    RxJs Angular
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" (click)="activateClass('observables')" id="observables"
+                                            aria-current="page" [routerLink]="['/rxjs-angular/observables']">Observables</a></li>
+                                    <li><a class="dropdown-item" (click)="activateClass('scrollloading')" id="operators"
+                                            aria-current="page" [routerLink]="['/rxjs-angular/operators']">Operators</a></li>
+                                </ul>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" (click)="logoutUser()" id="logout" routerLink="/">Logout</a>
                             </li>
