@@ -28,8 +28,8 @@ export class AppComponent implements OnInit {
 		//this.title = `AngApp ${new Date().getTime()}`;
 		//this.isUserLogin = this.auth.getAuthStatus();   
 		console.log('location ', this._loc.path());  
-		this.activateClass('home');
-		this.router.navigate(['home']);
+		this.activateClass(this._loc.path());
+		// this.router.navigate([this._loc.path()]);
     }
 	activateClass(routeId): void {
 		setTimeout(()=>{

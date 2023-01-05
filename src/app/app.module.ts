@@ -14,6 +14,7 @@ import { RegistrationComponent } from './CustomComponent/registration/registrati
 import { MaterialModule } from './Core/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastService } from './Services/toast/toast.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Below modules are imported by lazyloading in app-routing modules
 //import { TodoModule } from './CustomComponent/todo-app/todo.module';
 //import { DatatableModule } from './CustomComponent/datatables/datatable.module';
@@ -36,7 +37,8 @@ import { ToastService } from './Services/toast/toast.service';
 		BrowserModule, 
 		FormsModule, 
 		ReactiveFormsModule,
-		AppRoutingModule, 
+		AppRoutingModule,
+  BrowserAnimationsModule, 
 	],
 	providers: [{  
 		provide: HTTP_INTERCEPTORS,  

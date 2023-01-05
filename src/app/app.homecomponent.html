@@ -51,11 +51,13 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="rxjsangular" href="#" role="button" data-bs-toggle="dropdown"
+                                <a class="nav-link dropdown-toggle"  id="rxjs-angular" href="#" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     RxJs Angular
                                 </a>
                                 <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" (click)="activateClass('rxjs')" id="rxjs"
+                                        aria-current="page" [routerLink]="['/rxjs-angular/rxjs']">About RxJs</a></li>
                                     <li><a class="dropdown-item" (click)="activateClass('observables')" id="observables"
                                             aria-current="page" [routerLink]="['/rxjs-angular/observables']">Observables</a></li>
                                     <li><a class="dropdown-item" (click)="activateClass('scrollloading')" id="operators"

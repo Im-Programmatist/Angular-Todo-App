@@ -1,5 +1,7 @@
 # Angular-Todo-App
 
+## Want to become an effective angular developer read the blog once - https://matcha.fyi/things-to-learn-angular/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0-rc.3.
 
 ## Development server

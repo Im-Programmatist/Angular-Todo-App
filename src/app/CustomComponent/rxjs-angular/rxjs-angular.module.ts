@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ObservablesComponent } from './observables/observables.component';
-import { OperatorsComponent } from './operators/operators.component';
+import { ObservablesComponent } from './observables.component';
+import { OperatorsComponent } from './operators.component';
+import { RxJsComponent } from './rxjs.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const rxjsangular_routes =  [
 	//{ 
 		//path: 'datatables', canActivate: [AuthGuard], children: [
+      { path: 'rxjs', component: RxJsComponent, },
 			{ path: 'observables', component: ObservablesComponent, },
 			{ path: 'operators', component: OperatorsComponent,  }
 		//] 
@@ -16,11 +19,12 @@ const rxjsangular_routes =  [
 @NgModule({
   declarations: [
     ObservablesComponent,
-    OperatorsComponent
+    OperatorsComponent,    
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(rxjsangular_routes),
+    MatSlideToggleModule,
   ],
   exports: [
     ObservablesComponent,
