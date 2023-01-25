@@ -7,6 +7,8 @@ export class SharedService {
 
 	@Output() changeRouteVisibilityEvent: EventEmitter<any> = new EventEmitter();
 
+	@Output() shareDataEvent: EventEmitter<any> = new EventEmitter();
+
 	constructor() {
 	}
  
@@ -16,5 +18,14 @@ export class SharedService {
  
 	getEmittedValueVisibility() {
 		return this.changeRouteVisibilityEvent;
+	}
+
+	setDataThroughSharedService(data) {
+		console.log(`data in set shared service:`,data);
+		this.shareDataEvent.emit({'type': 'share data', 'value': 'Testing data', ...data});
+	}
+
+	getDataThroughSharedService() {
+		return this.shareDataEvent;
 	}
 }

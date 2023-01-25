@@ -5,6 +5,8 @@
             <h6 class="card-subtitle mb-2 text-muted" [ngClass]="{'strike':todo.completed}">
                 <p [attr.data-date]="todo.createdAt" [class.className]="todo.title">
                     <span>{{todo.createdAt}}</span>
+                    <br/>
+                    <span>{{todo.testInputDecoGetSetMethod}}</span>
                 </p>
             </h6>
             <p class="card-text">{{todo.desc}}</p>

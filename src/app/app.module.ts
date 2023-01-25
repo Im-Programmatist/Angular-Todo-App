@@ -15,6 +15,10 @@ import { MaterialModule } from './Core/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastService } from './Services/toast/toast.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AttributesDirectivesDirective } from './CustomDirectives/attributes-directives.directive';
+import { StructuralDirectiveDirective } from './CustomDirectives/structural-directive.directive';
+import { ParentcomponentComponent } from './CustomComponent/Parent-Child-Comp/parentcomponent.component';
+import { ChildcomponentComponent } from './CustomComponent/Parent-Child-Comp/childcomponent.component';
 //Below modules are imported by lazyloading in app-routing modules
 //import { TodoModule } from './CustomComponent/todo-app/todo.module';
 //import { DatatableModule } from './CustomComponent/datatables/datatable.module';
@@ -28,6 +32,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		HomeComponent,
 		LoginComponent,
 		RegistrationComponent,
+  		AttributesDirectivesDirective,
+    StructuralDirectiveDirective,
+    ParentcomponentComponent,
+    ChildcomponentComponent,
 	],
 	imports: [
 		HttpClientModule,
@@ -38,13 +46,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		FormsModule, 
 		ReactiveFormsModule,
 		AppRoutingModule,
-  BrowserAnimationsModule, 
+  		BrowserAnimationsModule, 
 	],
-	providers: [{  
-		provide: HTTP_INTERCEPTORS,  
-		useClass: TokenInterceptor,  
-		multi: true  
-	},ToastService],
+	providers: [
+		{  
+			provide: HTTP_INTERCEPTORS,  
+			useClass: TokenInterceptor,  
+			multi: true  
+		},
+		ToastService
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {

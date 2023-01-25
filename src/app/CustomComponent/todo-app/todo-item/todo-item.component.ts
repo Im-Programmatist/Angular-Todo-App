@@ -11,7 +11,16 @@ import { ToastService, TOAST_STATE } from '../../../Services/toast/toast.service
 export class TodoItemComponent implements OnInit {
 
 	//this input will take data from parent component or from import
-	@Input() todo: Todo;
+	@Input() 
+	set todo(value:any){
+		console.log(`inside set todo`,value);
+		value.testInputDecoGetSetMethod=value.sno+"Input decorator - modified input value coming from parent";
+		this._todo = value;
+	}
+	get todo(): any{
+		return this._todo
+	}
+	_todo: Todo;
 	localTodo:string;
 	//This output will pass data to parent component
 	@Output() todoDelete: EventEmitter<Todo> = new EventEmitter();//we have emitted event from child to parent

@@ -1,6 +1,6 @@
 import { Component, VERSION, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { take, takeUntil, combineAll, map, filter, finalize } from 'rxjs/operators';
+import { Observable, interval } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-observables',
@@ -23,6 +23,17 @@ import { take, takeUntil, combineAll, map, filter, finalize } from 'rxjs/operato
 				<li style='color:red;'>With the error value, the observer sends a JavaScript exception. If an error is found in the Observable, nothing else can be delivered to the Observable</li>
 				<li style='color:red;'>To make observables asynchronous, let us wrap timers around some of the values. so values in timer get later once timer ends then only complete method get called not before timer values.</li>
 				<li style='color:blue;'>In asynchronous observer if error block written in higher timer than complete block then observer never reach to error value emerge </li>
+				<li style='color:green;'>
+					<h3>Unsubscribe Observables</h3>
+					<ul>
+						<li style='color:red;'>subscribeTimer.unsubscribe();</li>
+						<li style='color:red;'>
+							using async pipe - When the component gets destroyed, the async pipe unsubscribes automatically to avoid potential memory leaks. 
+							use observable variable using interpolation in html part - {{observable$ | async}}	
+						</li>
+						<li style='color:red;'>Using take operators - subscription  will unsubscribe when the interval emits the first value.</li>
+					</ul>
+				</li>
 			</ul>	
 			<div>
 				<pre>
@@ -111,6 +122,8 @@ export class ObservablesComponent implements OnInit {
 	`;
 	name = 'Angular ' + VERSION.major;
 
+	observable$;//this obs used for unsubscribe using async pipe
+
 	obs = new Observable(observer => {
 	  console.log('Normal Observable starts');
 	  observer.next('1');
@@ -145,6 +158,9 @@ export class ObservablesComponent implements OnInit {
 	});
 
  	constructor(){
+
+		this.observable$ = interval(1000);
+
 		this.obsWithInterval
 		.pipe(
 			//filter((val:any) => { return (val % 2 == 0); }),

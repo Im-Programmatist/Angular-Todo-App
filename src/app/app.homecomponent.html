@@ -60,9 +60,21 @@
                                         aria-current="page" [routerLink]="['/rxjs-angular/rxjs']">About RxJs</a></li>
                                     <li><a class="dropdown-item" (click)="activateClass('observables')" id="observables"
                                             aria-current="page" [routerLink]="['/rxjs-angular/observables']">Observables</a></li>
-                                    <li><a class="dropdown-item" (click)="activateClass('scrollloading')" id="operators"
-                                            aria-current="page" [routerLink]="['/rxjs-angular/operators']">Operators</a></li>
+                                    <li><a class="dropdown-item" (click)="activateClass('take-operators')" id="take-operators"
+                                            aria-current="page" [routerLink]="['/rxjs-angular/take-operators']">Take Operators</a></li>
+                                    <li><a class="dropdown-item" (click)="activateClass('utility-operators')" id="utility-operators"
+                                            aria-current="page" [routerLink]="['/rxjs-angular/utility-operators']">Utility Operators</a></li>
+                                    <li><a class="dropdown-item" (click)="activateClass('conditional-operators')" id="conditional-operators"
+                                        aria-current="page" [routerLink]="['/rxjs-angular/conditional-operators']">Conditional Operators</a></li>
+                                    <li><a class="dropdown-item" (click)="activateClass('multicasting-operators')" id="multicasting-operators"
+                                        aria-current="page" [routerLink]="['/rxjs-angular/multicasting-operators']">Multicasting Operators</a></li>
+                                    <li><a class="dropdown-item" (click)="activateClass('filtering-operators')" id="filtering-operators"
+                                        aria-current="page" [routerLink]="['/rxjs-angular/filtering-operators']">Filtering Operators</a></li>
                                 </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="activateClass('Child-Parent')" id="Child-Parent"
+                                    routerLink="/Child-Parent">Child-Parent-Directives</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" (click)="logoutUser()" id="logout" routerLink="/">Logout</a>
