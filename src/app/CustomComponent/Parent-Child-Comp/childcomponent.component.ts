@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { SharedService } from '../../Services/shared/shared.service';
-
+import { ParentcomponentComponent } from './parentcomponent.component';
 @Component({
 selector: 'app-childcomponent',
 template: `<div>
@@ -17,11 +17,20 @@ template: `<div>
 			<br/>
 			<br/>
 			<br/>
+				<div>
+					<label>Data get by injecting parent class in child constructor and use class-object to get data - </label>
+					<br/>
+					<span style="color:red">{{parentComponentData}}</span>					
+					<br/>
+				</div>
+			<br/>
+			<br/>
 		</div>`
 })
 export class ChildcomponentComponent implements OnInit, AfterViewInit {
 
 	public dataFromSharedService :any;
+	public parentComponentData: any;
 	@Input()
 	set inputData(value:any) {
 		value.push('abc');
@@ -33,7 +42,7 @@ export class ChildcomponentComponent implements OnInit, AfterViewInit {
 	};
 	_inputData:any;
 
-	constructor(private sharedService: SharedService){
+	constructor(private sharedService: SharedService, public ParentcomponentComponent: ParentcomponentComponent ){
 		console.log(`testing child component`);
 	}
 
@@ -41,6 +50,7 @@ export class ChildcomponentComponent implements OnInit, AfterViewInit {
 
 	ngOnInit(): void {
 		console.log(`in ng init _inputData `, this._inputData, this.inputData);
+		this.parentComponentData = this.ParentcomponentComponent.onlyParenData;
 	}
 
 	tryToEMitDataFromChildToParent(value: string) {

@@ -9,6 +9,7 @@ import { MulticastingOperatorsComponent } from './multicastingOperators.componen
 import { FilteringOperatorsComponent } from './filteringOperators.component';
 import { RxJsComponent } from './rxjs.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { SubjectBehaviourComponent } from './subject-behaviour.component';
 
 const rxjsangular_routes =  [
 	//{  
@@ -20,6 +21,7 @@ const rxjsangular_routes =  [
       { path: 'conditional-operators', component: ConditionalOperatorsComponent, },
       { path: 'multicasting-operators', component: MulticastingOperatorsComponent, },
       { path: 'filtering-operators', component: FilteringOperatorsComponent, },
+      { path:'subject-types', component: SubjectBehaviourComponent }
 		//] 
 	//}
 ]
@@ -32,7 +34,8 @@ const rxjsangular_routes =  [
     UtilityOperatorsComponent,
     ConditionalOperatorsComponent,
     MulticastingOperatorsComponent,
-    FilteringOperatorsComponent
+    FilteringOperatorsComponent,
+    SubjectBehaviourComponent
   ],
   imports: [
     CommonModule,

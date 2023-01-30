@@ -38,7 +38,7 @@ export class ParentcomponentComponent implements OnInit{
 	txtsize = '25px';  
     colors = ['CYAN', 'GREEN', 'YELLOW'];  
     myColor = '';  
-
+	onlyParenData = "This variable is in parent, access in child by using parent class object...";
 	constructor(ElementRef: ElementRef, private sharedService: SharedService) { 
 		this.elementRef = ElementRef;
 		console.log('this is home component');
